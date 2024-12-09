@@ -60,4 +60,7 @@ RUN chmod -R 755 /opt/browsers \
 
 COPY --from=builder /usr/bin/google-maps-scraper /usr/bin/
 
+# Expose port 6060 for the API
+EXPOSE 6060
+
 ENTRYPOINT ["google-maps-scraper"]

@@ -21,6 +21,7 @@ const (
 )
 
 var _ scrapemate.JobProvider = (*provider)(nil)
+var _ gmaps.Provider = (*provider)(nil)
 
 type provider struct {
 	db      *sql.DB
