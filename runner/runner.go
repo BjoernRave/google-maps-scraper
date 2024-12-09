@@ -130,6 +130,10 @@ func ParseConfig() *Config {
 		cfg.AwsRegion = os.Getenv("MY_AWS_REGION")
 	}
 
+	if cfg.Dsn == "" {
+		cfg.Dsn = os.Getenv("GMAPS_POSTGRES_DSN")
+	}
+
 	if cfg.AwsLambdaInvoker && cfg.FunctionName == "" {
 		panic("FunctionName must be provided when using AwsLambdaInvoker")
 	}
@@ -156,6 +160,10 @@ func ParseConfig() *Config {
 
 	if cfg.Dsn == "" && cfg.ProduceOnly {
 		panic("Dsn must be provided when using ProduceOnly")
+	}
+
+	if proxies == "" {
+		proxies = os.Getenv("GMAPS_PROXIES")
 	}
 
 	if proxies != "" {
