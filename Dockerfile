@@ -14,7 +14,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && mkdir -p /opt/browsers \
     && playwright install chromium --with-deps \
     && mkdir -p /opt/ms-playwright-go \
-    && cp -r /root/.cache/ms-playwright/* /opt/ms-playwright-go/ \
+    && if [ -d "/root/.cache/ms-playwright" ]; then \
+          cp -r /root/.cache/ms-playwright/* /opt/ms-playwright-go/ || true; \
+        elif [ -d "/root/.cache/ms-playwright-go" ]; then \
+          cp -r /root/.cache/ms-playwright-go/* /opt/ms-playwright-go/ || true; \
+        fi \
     && rm -rf /root/.cache/* /root/.npm/*
 
 # Build stage
