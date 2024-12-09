@@ -10,6 +10,7 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/gosom/google-maps-scraper/postgres"
 	"github.com/gosom/google-maps-scraper/runner"
 	"github.com/gosom/google-maps-scraper/runner/databaserunner"
 	"github.com/gosom/google-maps-scraper/runner/filerunner"
@@ -17,7 +18,6 @@ import (
 	"github.com/gosom/google-maps-scraper/runner/lambdaaws"
 	"github.com/gosom/google-maps-scraper/runner/webrunner"
 	"github.com/gosom/google-maps-scraper/web/handlers"
-	"github.com/gosom/google-maps-scraper/postgres"
 	"github.com/gosom/google-maps-scraper/web/server"
 	"go.uber.org/zap"
 )

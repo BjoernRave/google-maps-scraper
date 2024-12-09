@@ -110,7 +110,7 @@ func (h *JobHandler) CreateJob(w http.ResponseWriter, r *http.Request) {
 
 	// Push job to provider
 	if err := h.provider.Push(r.Context(), job); err != nil {
-		logger.Error("failed to push job", 
+		logger.Error("failed to push job",
 			zap.Error(err),
 			zap.String("job_id", jobID),
 		)
@@ -151,4 +151,4 @@ func (h *JobHandler) respondWithJSON(w http.ResponseWriter, code int, payload in
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)
 	w.Write(response)
-} 
+}

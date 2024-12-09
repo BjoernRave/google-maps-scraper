@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && go install github.com/playwright-community/playwright-go/cmd/playwright@latest \
     && mkdir -p /opt/browsers \
     && playwright install chromium --with-deps \
-    && mv /root/.cache/ms-playwright-go /opt/ \
+    && cp -r /root/.cache/ms-playwright-go /opt/ \
     && rm -rf /root/.cache/* /root/.npm/*
 
 # Build stage

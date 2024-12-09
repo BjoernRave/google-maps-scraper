@@ -9,4 +9,4 @@ import (
 type Provider interface {
 	// Push adds a new job to the queue
 	Push(ctx context.Context, job scrapemate.IJob) error
-} 
+}
