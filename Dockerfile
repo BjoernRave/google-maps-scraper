@@ -2,6 +2,7 @@
 FROM golang:1.23.2-bullseye AS playwright-deps
 ENV PLAYWRIGHT_BROWSERS_PATH=/opt/browsers
 ENV PLAYWRIGHT_DRIVER_PATH=/opt/
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
@@ -12,7 +13,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && go install github.com/playwright-community/playwright-go/cmd/playwright@latest \
     && mkdir -p /opt/browsers \
     && playwright install chromium --with-deps \
-    && cp -r /root/.cache/ms-playwright-go /opt/ \
+    && mkdir -p /opt/ms-playwright-go \
+    && cp -r /root/.cache/ms-playwright/* /opt/ms-playwright-go/ \
     && rm -rf /root/.cache/* /root/.npm/*
 
 # Build stage
